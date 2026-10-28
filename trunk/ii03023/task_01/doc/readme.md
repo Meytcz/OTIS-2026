@@ -106,8 +106,9 @@ $$y_{\tau+1} = y_{\tau} + \Delta t \cdot (-a_1 y_\tau - a_2 y_\tau^2 + b u_\tau)
 classDiagram
     class Model {
         <<abstract>>
-        #double y
-        #double y0
+        -double y
+        -double y0
+        #setY(value)
         +next(u) double*
         +name() string*
         +reset()

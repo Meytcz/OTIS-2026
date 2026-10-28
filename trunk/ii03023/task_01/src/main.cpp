@@ -28,7 +28,9 @@ int main() {
     std::cout << "Enter number of simulation steps n: ";
     if (!(std::cin >> n) || n <= 0) n = 20;   // если ввели ерунду — 20 шагов
 
-    double a1, b1, b2;
+    double a1;
+    double b1;
+    double b2;
     std::cout << "Model 1.10 coefficients a1 b1 b2 (e.g. 0.7 0.5 0.3): ";
     if (!(std::cin >> a1 >> b1 >> b2)) { a1 = 0.7; b1 = 0.5; b2 = 0.3; }
 
@@ -53,7 +55,7 @@ int main() {
     std::ofstream csv("results.csv");
     csv << "model,input,tau,u,y\n";
     for (Model* m : models)
-        for (auto& in : inputs)
+        for (const auto& in : inputs)
             simulate(*m, *in, n, csv);
 
     std::cout << "\nResults saved to results.csv\n";

@@ -9,7 +9,7 @@ with open("results.csv", encoding="utf-8") as f:
         xs.append(int(row["tau"]))
         ys.append(float(row["y"]))
 
-models = sorted({m for m, _ in data})
+models = sorted({key[0] for key in data})
 fig, axes = plt.subplots(len(models), 1, figsize=(9, 3.2 * len(models)))
 for ax, model in zip(axes, models):
     for (m, inp), (xs, ys) in data.items():
